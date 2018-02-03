@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    <body class="yellow accent-1 flow-text">
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      <script>
+        function temp(){
+          var a=document.getElementById('unit1').value;
+          var b=document.getElementById('unit2').value;
+
+          var t2;
+
+          var t1=parseFloat(document.getElementById('temp1').value);
+
+          if(a=="C" && t1>=-273.15)
+          {
+            if(b=="F")
+              t2=(t1*9/5)+32;
+            else if(b=="K")
+              t2=t1+273.15;
+            else if(b=="C")
+              t2=t1;
+            else
+              t2="Invalid Input";
+          }
+          else if(a=="F" && t1>=-459.67)
+          {
+            if(b=="C")
+              t2=5*(t1-32)/9;
+            else if(b=="K")
+              t2=5*(t1-32)/9+273.15;
+            else if(b=="F")
+              t2=t1;
+            else
+              t2="Invalid Input";
+          }
+          else if(a=="K" && t1>=0)
+          {
+            if(b=="C")
+              t2=t1-273.15;
+            else if(b=="F")
+              t2=9*(t1-273.15)/5+32;
+            else if(b=="K")
+              t2=t1;
+            else
+              t2="Invalid Input";
+          }
+          else t2="Invalid Input";
+        
+        if(t2=="Invalid Input")
+        document.getElementById('result').innerHTML=t2;
+        else
+        document.getElementById('result').innerHTML=t2.toFixed(2);
+      }
+      </script>
+      
+      <div class="lime lighten-3">
+        <h1 class="center-align">Calculator</h1>
+      </div>
+      <div class="container">
+        <div class="row">
+          <a href="file:///C:/Users/Shivank/Desktop/Calculator_base.html"><button class="btn col l4 s12 white-text red accent-3 waves-effect waves-light">Base Convertor</button></a>
+         
+          <button class="btn col l4 s12 white-text orange waves-effect waves-light">Temperature Convertor</button>
+       
+          <a href="file:///C:/Users/Shivank/Desktop/Calculator_arithmetic.html"><button class="btn col l4 s12 white-text purple accent-3 waves-effect waves-light">Arithmetic Calculator</button></a>
+
+
+          
+        </div>
+        
+
+
+      <h3>Temperature Convertor</h3>
+
+      <div class="divider"></div>
+
+      <p><strong>Enter the two units of temperature and the value of temperature to be converted. Temperature unit can be C(Celcius), K(Kelvin) or F(Fahrenheit)</strong></p>
+
+      <br>
+      <p><strong>Enter unit 1:</strong></p>
+      <input type="text" name="" placeholder="" id="unit1">
+
+      <p><strong>Enter unit 2:</strong></p>
+      <input type="text" name="" placeholder="" id="unit2">
+
+      <p><strong>Enter the temperature:</strong></p>
+      <input type="text" name="" placeholder="" id="temp1">
+
+      <button class="btn" onclick="temp()">GO</button>
+
+      <h3>Answer is: </h3>
+      <p id="result"></p>
+
+      <br><br>
+
+      <div class="blue lighten-4 center-align"><h5>Made by: Shivank Sahai</h5></div>
+
+      </div>
+
+
+    </body>
+
+    </html>
