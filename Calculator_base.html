@@ -16,6 +16,28 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
       <script>
+        function convert_dec_to_any(n1,b){
+              var nn="";
+              while(n1>0)
+              {
+                nn=n1%b+nn;
+                n1=parseInt(n1/b);
+              }
+              return nn;
+        }
+
+        function convert_any_to_dec(n1,a){
+              var x=0;
+              var nn=0;
+              while(n1>0)
+              {
+                nn=nn+(n1%10)*parseInt((Math.pow(a,x)));
+                n1=parseInt(n1/10);
+                x=x+1;
+              }
+              return nn;
+        }
+
         function convert_base(){
           var a=parseInt(document.getElementById('base1').value);
           var b=parseInt(document.getElementById('base2').value);
@@ -30,23 +52,16 @@
           {
             if(a==10)
             {
-              n2="";
-              while(n1>0)
-              {
-                n2=n1%2+n2;
-                n1=parseInt(n1/2);
-              }
+              n2=convert_dec_to_any(n1,b);
+            }
+            else if(b==10)
+            {
+              n2=convert_any_to_dec(n1,a);
             }
             else
             {
-              var x=0;
-              n2=0;
-              while(n1>0)
-              {
-                n2=n2+(n1%10)*parseInt((Math.pow(2,x)));
-                n1=parseInt(n1/10);
-                x=x+1;
-              }
+              var nt=convert_any_to_dec(n1,a);
+              n2=convert_dec_to_any(nt,b);
             }
           }
 
@@ -62,9 +77,9 @@
         <div class="row">
           <button class="btn col l4 s12 white-text red accent-3 waves-effect waves-light">Base Convertor</button>
          
-          <a href="Calculator_temperature.html"><button class="btn col l4 s12 white-text orange waves-effect waves-light">Temperature Convertor</button></a>
+          <a href="file:///C:/Users/Shivank/Desktop/Calculator_temperature.html"><button class="btn col l4 s12 white-text orange waves-effect waves-light">Temperature Convertor</button></a>
        
-          <a href="Calculator_arithmetic.html"><button class="btn col l4 s12 white-text purple accent-3 waves-effect waves-light">Arithmetic Calculator</button></a>
+          <a href="file:///C:/Users/Shivank/Desktop/Calculator_arithmetic.html"><button class="btn col l4 s12 white-text purple accent-3 waves-effect waves-light">Arithmetic Calculator</button></a>
 
 
           
@@ -76,7 +91,7 @@
 
       <div class="divider"></div>
 
-      <p><strong>Enter two bases and the number to be converted. Base can be 10(Decimal) or 2(Binary)</strong></p>
+      <p><strong>Enter two bases and the number to be converted. Base can be from 2 to 9</strong></p>
 
       <br>
       <p><strong>Enter base 1:</strong></p>
